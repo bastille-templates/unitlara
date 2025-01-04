@@ -3,20 +3,15 @@ ARG php_v=82
 # install required famp
 INCLUDE https://github.com/bastille-templates/php
 
-PKG php${php_v}-ctype php${php_v}-curL php${php_v}-dom php${php_v}-fileinfo php${php_v}-filter php${php_v}-mbstring php${php_v}-pdo php${php_v}-session php${php_v}-tokenizer php${php_v}-xml php${php_v}-xmlwriter php${php_v}-composer 
+PKG unit-php${php_v} php${php_v}-ctype php${php_v}-curL php${php_v}-dom php${php_v}-fileinfo php${php_v}-filter php${php_v}-mbstring php${php_v}-pdo php${php_v}-session php${php_v}-tokenizer php${php_v}-xml php${php_v}-xmlwriter php${php_v}-composer 
 # php${php_v}-mysqli php${php_v}-pdo_mysql php${php_v}-sqlite3 php${php_v}-pdo_sqlite
 
 # Create Project
 CMD cd /root; composer create-project laravel/laravel project
-# copy files
-CMD root /root/project/.env
+CMD cd /root; sh bootstrap.sh
 
-CMD cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
-CMD cd /root/project: chmod -R 775 database; chmod -R 775 storage
-CMD cd /root/project; chmod 644 .env; chown www:www .env
-CMD cd /root/project; php artisan migrate
-CMD cd /root/; php artisan serve --host 0.0.0.0 --port=80
+# copy files
+#CP root /root/project/.env
 
 SERVICE php_fpm restart
 SERVICE nginx restart
-#SERVICE mysql-server restart
