@@ -14,4 +14,4 @@ CMD cd /root; sh bootstrap.sh
 #CP root /root/project/.env
 
 SERVICE php_fpm restart
-SERVICE nginx restart
+#SERVICE nginx restart
