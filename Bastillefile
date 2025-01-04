@@ -3,8 +3,7 @@ ARG php_v=82
 # install required famp
 INCLUDE https://github.com/bastille-templates/php
 
-PKG unit-php${php_v} php${php_v}-ctype php${php_v}-curL php${php_v}-dom php${php_v}-fileinfo php${php_v}-filter php${php_v}-mbstring php${php_v}-pdo php${php_v}-session php${php_v}-tokenizer php${php_v}-xml php${php_v}-xmlwriter php${php_v}-composer 
-# php${php_v}-mysqli php${php_v}-pdo_mysql php${php_v}-sqlite3 php${php_v}-pdo_sqlite
+PKG unit-php${php_v} php${php_v}-ctype php${php_v}-curL php${php_v}-dom php${php_v}-fileinfo php${php_v}-filter php${php_v}-mbstring php${php_v}-pdo php${php_v}-session php${php_v}-tokenizer php${php_v}-xml php${php_v}-xmlwriter php${php_v}-composer php${php_v}-mysqli php${php_v}-pdo_mysql php${php_v}-sqlite3 php${php_v}-pdo_sqlite
 
 # Create Project
 CMD cd /root; composer create-project laravel/laravel project
