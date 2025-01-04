@@ -7,10 +7,17 @@ PKG unit-php${php_v} php${php_v}-ctype php${php_v}-curL php${php_v}-dom php${php
 
 # Create Project
 CMD cd /root; composer create-project laravel/laravel project
-CMD cd /root; sh bootstrap.sh
 
 # copy files
-#CP root /root/project/.env
+CP root/bootstrap.sh /root/
+CP root/config.json /root/
+
+CMD cd /root; sh bootstrap.sh
+
+SERVICE unitd enable
 
 SERVICE php_fpm restart
-#SERVICE nginx restart
+SERVICE unitd start
+
+RDR tcp 80 80
+RDR tcp 443 443
